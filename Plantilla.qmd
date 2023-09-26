@@ -23,6 +23,8 @@ Fecha de entrega: Jueves 28 de Septiembre 23:59.
 
 Definir y describir activo a estudiar, acompañar con datos (tributa a indicador de Contexto) y con referencias científicas realizando una investigacion relacionada a articulos ubicados en la base de datos de Web of Science, con una calificacion Q1-Q2 y referenciada varias veces (Esto se verá en el tutorial de la semana 5).
 
+El activo a estudiar corresponde a PARAUCO, acción de la empresa Parque Arauco, perteneciente al rubro inmobiliario y centrada principalmente en la edificación y administración de centros comerciales. Actualemente tiene operaciones en Chile, Perú y Colombia. Se funcdó el año 1979.
+
 ```{r ETL}
 #| echo: false
 # Alternativamente Use FANG data set
@@ -31,27 +33,27 @@ end <- as_date("2022-12-31")
 # Get AAPL and AMZN Stock Prices
 # AAPL <- tq_get("AAPL", get = "stock.prices", from = "2015-09-01", to = end)
 # AMZN <- tq_get("AMZN", get = "stock.prices", from = "2000-01-01", to = end)
-CMPC <- tq_get("PARAUCO.SN", get = "stock.prices", from = "2000-01-01", to = end)
+PARAUCO <- tq_get("PARAUCO.SN", get = "stock.prices", from = "2000-01-01", to = end)
 VAPORES <- tq_get("VAPORES.SN", get = "stock.prices", from = "2000-01-01", to = end)
 CONCHATORO <- tq_get("CONCHATORO.SN", get = "stock.prices", from = "2000-01-01", to = end)
-CL <- rbind(CMPC,VAPORES,CONCHATORO)
+CL <- rbind(PARAUCO,VAPORES,CONCHATORO)
 ```
 
-El activo CMPC tiene un valor promedio para el intervalo igual a `r round(mean(CMPC$close),digits=0)`
+El activo PARAUCO tiene un valor promedio para el intervalo igual a `r round(mean(PARAUCO$close),digits=0)`
 
-```{r CMPCline}
+```{r PARAUCOline}
 #| echo: false
-CMPC %>%
+PARAUCO %>%
     ggplot(aes(x = date, y = close)) +
     geom_line() +
-    labs(title = "CMPC Line Chart", y = "Closing Price", x = "") + 
+    labs(title = "PARAUCO Line Chart", y = "Closing Price", x = "") + 
     theme_tq() +
-  geom_hline(yintercept=mean(CMPC$close), linetype="dashed", color = "red")
+  geom_hline(yintercept=mean(PARAUCO$close), linetype="dashed", color = "red")
 ```
 
-```{r CMPCcandle}
+```{r PARAUCOcandle}
 #| warning: false
-CMPC %>%
+PARAUCO %>%
     ggplot(aes(x = date, y = close)) +
     geom_candlestick(aes(open = open, high = high, low = low, close = close)) +
     labs(title = "AAPL Candlestick Chart", y = "Closing Price", x = "") +
