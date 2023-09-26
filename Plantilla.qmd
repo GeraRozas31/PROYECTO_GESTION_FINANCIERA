@@ -23,7 +23,7 @@ Fecha de entrega: Jueves 28 de Septiembre 23:59.
 
 Definir y describir activo a estudiar, acompañar con datos (tributa a indicador de Contexto) y con referencias científicas realizando una investigacion relacionada a articulos ubicados en la base de datos de Web of Science, con una calificacion Q1-Q2 y referenciada varias veces (Esto se verá en el tutorial de la semana 5).
 
-El activo a estudiar corresponde a PARAUCO, acción de la empresa Parque Arauco, perteneciente al rubro inmobiliario y centrada principalmente en la edificación y administración de centros comerciales. Actualemente tiene operaciones en Chile, Perú y Colombia. Se funcdó el año 1979.
+El activo a estudiar corresponde a PARAUCO, acción de la empresa Parque Arauco, perteneciente al rubro inmobiliario y centrada principalmente en la edificación y administración de centros comerciales. Actualemente tiene operaciones en Chile, Perú y Colombia. Se fundó el año 1979.
 
 ```{r ETL}
 #| echo: false
@@ -63,6 +63,8 @@ PARAUCO %>%
 ### Motivación
 
 Establecer la relevancia o potencial interés específico del activo que justifique el porque realizar la investigacion a este activo y no a otros. Argumentar haciendo referencia a datos o noticias actuales que motiven el estudio de este activo.
+
+Estudiar el activo PARAUCO se vuelve relevante dado el fuerte movimiento que ha vivido la empresa Parque Arauco en el último tiempo.
 
 ### Contexto
 
