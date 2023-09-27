@@ -23,7 +23,9 @@ Fecha de entrega: Jueves 28 de Septiembre 23:59.
 
 Definir y describir activo a estudiar, acompañar con datos (tributa a indicador de Contexto) y con referencias científicas realizando una investigacion relacionada a articulos ubicados en la base de datos de Web of Science, con una calificacion Q1-Q2 y referenciada varias veces (Esto se verá en el tutorial de la semana 5).
 
-El activo a estudiar corresponde a PARAUCO, acción de la empresa Parque Arauco, perteneciente al rubro inmobiliario y centrada principalmente en la edificación y administración de centros comerciales. Actualemente tiene operaciones en Chile, Perú y Colombia. Se fundó el año 1979.
+La temática a estudiar corresponde al sector inmobiliario. Este sector comprende la oferta y demanda de bienes inmuebles (casas, departamentos, terrenos, etc.), que pueden tener diversos usos, como el uso residencial, comercial, industrial, etc. Aun así, este sector también comprende temas de inversión, financiamiento, urbanización, e incluso temas sociales asociados.
+
+En Chile, este sector es especialmente relevante. Dada la importante inmigración, expansión de los centros urbanos, entre otros factores, los sectores residenciales y comerciales experimentan un importante crecimiento, con todos los beneficios y problemáticas que involucran. Por ejemplo, un estudio llamado ["Real estate production, geographies of mobility and spatial contestation: A two case study in Santiago de Chile"](https://www.webofscience.com/wos/woscc/full-record/WOS:000431935400010) , muestra que "mientras que la zona interior de Santiago, en proceso de reurbanización, a pesar de ser un espacio excluyente en el que no existen viviendas asequibles orientadas a las rentas más bajas, no es un espacio disputado en términos de acceso a los medios de movilidad, la periferia en expansión de la ciudad muestra fuertes diferencias de clase entre los nuevos y los antiguos habitantes." Esto muestra la relevancia del sector inmobiliario para el país, pues tiene influencia tanto en temas económicos como sociales.
 
 ```{r ETL}
 #| echo: false
