@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gerardo Rozas">
+
+<title>Proyecto Gestión Financiera</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Plantilla_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Plantilla_files/libs/quarto-html/quarto.js"></script>
+<script src="Plantilla_files/libs/quarto-html/popper.min.js"></script>
+<script src="Plantilla_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Plantilla_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Plantilla_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Plantilla_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Plantilla_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Plantilla_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Plantilla_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Proyecto Gestión Financiera</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gerardo Rozas </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="descripción-activo-y-contexto-hito-1" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-activo-y-contexto-hito-1">Descripción Activo y Contexto (Hito 1)</h2>
+<p>Fecha de entrega: Jueves 28 de Septiembre 23:59.</p>
+<section id="definición" class="level3">
+<h3 class="anchored" data-anchor-id="definición">Definición</h3>
+<p>La temática a estudiar corresponde al sector inmobiliario. Este sector comprende la oferta y demanda de bienes inmuebles (casas, departamentos, terrenos, etc.), que pueden tener diversos usos, como el uso residencial, comercial, industrial, etc. Aun así, este sector también comprende temas de inversión, financiamiento, urbanización, e incluso temas sociales asociados.</p>
+<p>En Chile, este sector es especialmente relevante. Dada la importante inmigración, expansión de los centros urbanos, entre otros factores, los sectores residenciales y comerciales han ganado importancia, con todos los beneficios y problemáticas que involucran. Por ejemplo, un estudio llamado <a href="#0">“Real estate production, geographies of mobility and spatial contestation: A two case study in Santiago de Chile”</a> , muestra que “mientras que la zona interior de Santiago, en proceso de reurbanización, a pesar de ser un espacio excluyente en el que no existen viviendas asequibles orientadas a las rentas más bajas, no es un espacio disputado en términos de acceso a los medios de movilidad, la periferia en expansión de la ciudad muestra fuertes diferencias de clase entre los nuevos y los antiguos habitantes.” Esto muestra la relevancia del sector inmobiliario para el país, pues tiene influencia tanto en temas económicos como sociales.</p>
+<p>En el último tiempo, sin embargo, la industria inmobiliaria ha sufrido importantes dificultades en Chile. La actividad del sector inmobiliario ha ido a la baja, han disminuido los ocupados en el sector, han aumentado los costos de los materiales, etc. Por ejemplo, se puede ver la caída de la actividad del sector en el siguiente gráfico:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/Captura%20de%20pantalla%202023-09-27%20213416.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Todo esto según información del <a href="https://www.bcentral.cl/contenido/-/detalle/que-esta-pasando-con-los-precios-de-las-viviendas-en-chile">Banco Central</a> y la <a href="https://cchc.cl/centro-de-informacion/indicadores/empleo-y-desempleo-sector-construccion">Cámara Chilena de la Construcción</a> que se analizará con mayor profundidad en la sección de Contexto.</p>
+<p>Dentro de este sector, se ha definido como activo a estudiar a Parque Arauco S.A (PARAUCO). Parque Arauco está centrada principalmente en la edificación y administración de centros comerciales. Fue fundada el año 1979, y actualmente tiene operaciones en Chile, Perú y Colombia. La empresa tiene cuatro formatos de centros comerciales: regionales, de barrio, outlets y strip centers, donde operan grandes tiendas (por ejemplo, Fallabella), restaurantes, supermercados, cines, etc.</p>
+<p>A continuación, se puede ver el movimiento del precio de su acción en el mercado de valores. El activo PARAUCO tiene un valor promedio para el intervalo igual a 839 , donde se puede apreciar una fuerte caída durante los años de pandemia y una aparente recuperación en el último tiempo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Plantilla_files/figure-html/PARAUCOline-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>PARAUCO <span class="sc">%&gt;%</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> close)) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_candlestick</span>(<span class="fu">aes</span>(<span class="at">open =</span> open, <span class="at">high =</span> high, <span class="at">low =</span> low, <span class="at">close =</span> close)) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AAPL Candlestick Chart"</span>, <span class="at">y =</span> <span class="st">"Closing Price"</span>, <span class="at">x =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_tq</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Plantilla_files/figure-html/PARAUCOcandle-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="motivación" class="level3">
+<h3 class="anchored" data-anchor-id="motivación">Motivación</h3>
+<p>Estudiar el activo Parque Arauco (PARAUCO) se vuelve relevante dado el fuerte movimiento que ha vivido la empresa en el último tiempo, a pesar del difícil momento de la industria (en Chile, al menos). La compañía ha estado viviendo una importante expansión, donde <a href="https://finance.yahoo.com/news/parque-arauco-acquires-controlling-stake-123000596.html">desembolsó USD$ 17 millones</a> para adquirir una posición controladora de un fondo de inversión inmobiliario en Medellín, el pasado 6 de septiembre de 2023. “Con esta inversión, damos un paso más en nuestra estrategia de incorporar a nuestro portafolio centros comerciales multipropietarios icónicos y de alta calidad, que cuentan con ubicaciones privilegiadas y excelentes perspectivas de crecimiento futuro”, señaló Eduardo Pérez Marchant, director general de la compañía.</p>
+<p>También, durante agosto de este año, se anunció una <a href="https://finance.yahoo.com/news/parque-arauco-acquires-stake-tit-124000112.html">inversión de USD$ 34 millones</a> por el 51% de Titán Plaza, uno de los centros comerciales más emblemáticos de Bogotá. Esta inversión comprende aproximadamente 19.000 m<sup>2</sup> de área comercial, que “en los últimos doce meses, hasta junio de 2023, esta área aportó un EBITDA de COP$ 23.000 millones (aproximadamente USD$ 5,6 millones)”. Durante el mismo mes, también anunció una <a href="https://finance.yahoo.com/news/parque-arauco-announces-usd-33-212600795.html">inversión de USD$ 33 millones</a> para ampliar su principal activo en Perú, Megaplaza Independencia.</p>
+<p>Por último, en temas nacionales, <a href="https://finance.yahoo.com/news/parque-arauco-successfully-issues-bond-164700487.html">Parque Arauco emitió con éxito un bono</a> en el mercado local chileno, por un total de UF 3.000.000 (aproximadamente USD$130 millones), mediante Link Capital Partners y BCI. La demanda total alcanzó 1,5 veces la oferta. La compañía, con una calificación de riesgo AA, realizó esta inversión para fortalecer la liquidez y estabilizar sus amortizaciones a futuro.</p>
+<p>Con todo este movimiento en el último tiempo, se vuelve interesante estudiar el activo PARAUCO, pues todas estas inversiones, anuncios, etc. parecieran indicar un buen momento de la empresa, a pesar del mal momento de la industria nacional, y por lo tanto relevante de estudiar.</p>
+</section>
+<section id="contexto" class="level3">
+<h3 class="anchored" data-anchor-id="contexto">Contexto</h3>
+<p>En primer lugar, es importante analizar los movimientos que ha tenido PARAUCO en el mercado en el último tiempo, por lo que se vuelve a mostrar el gráfico de la acción para entrar en mayor profundidad.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Plantilla_files/figure-html/PARAUCOline2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Se puede ver que la acción ha tenido bajas importantes principalmente durante la Crisis Subprime en el año 2007-2008, y también durante la crisis del Covid-19. Antes de este último suceso, la empresa había tenido su mayor valuación en bolsa, con un precio de acción superior a los CLP$ 2.000. Después de eso, cayó por debajo de los CLP$ 750, dado el freno de la actividad del sector inmobiliario durante la pandemia y las consecuencias económicas posteriores que ésta trajo. Luego de esto, la acción de la empresa Parque Arauco ha recuperado valor, llegando a los CLP$ 1.225 que vale hoy en día.</p>
+<p>Ahora bien, como se señaló anteriormente, es importante considerar algunas variables económicas que permiten dar contexto al sector y al activo. En ese sentido, la Cámara Chilena de la Construcción provee algunos indicadores para el rubro inmobiliario en Chile.</p>
+<p>La primera variable importante a considerar es el <a href="https://cchc.cl/centro-de-informacion/indicadores/indice-precios-construccion">Índice de Precios de Materiales e Insumos de Construcción (IPMIC).</a> Este indicador permite ver cómo han aumentado los precios con respecto a un año base (2014 en este caso), y tiene una influencia directa en el rendimiento de las empresas del sector inmobiliario. A continuación, se puede ver un gráfico de este indicador desde el 2017:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/IndicePreciosConstruccion.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Se puede ver una clara relación de que, cuando los precios han subido, la acción PARAUCO ha bajado. Incluso, durante los últimos meses del año la acción ha experimentado una leve caída, coincidiendo justamente con un aumento de los precios de los materiales. Se puede ver entonces que hay una relación bastante directa entre el IPMIC y la valoración del activo y sector.</p>
+<p>Otra variable importante para el sector inmobiliario son las <a href="https://www.bcentral.cl/web/banco-central/areas/estadisticas/tasas-de-interes">tasas de interés</a>. Esta variable tiene una incidencia directa en el desempeño del sector, tanto para la capacidad de endeudamiento de las empresas para llevar a cabo sus proyectos (oferta), como para la capacidad de deuda de las personas, empresas o sociedades que desean adquirir los inmuebles (demanda). A continuación, se muestra un gráfico que representa el movimiento de las tasas de interés en el último tiempo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/TasasDeInteres.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Se puede ver nuevamente que las tasas iban a la baja, pero que en el último tiempo han aumentado. Esto ha colaborado a que se frene el sector en el país.</p>
+<p>Por último, otra variable importante corresponde al <a href="https://cchc.cl/centro-de-informacion/indicadores/imacon">Índice Mensual de Actividad de la Construcción (IMACON)</a>, que indica el comportamiento de la actividad con respecto a un año base (2014 en este caso) y contempla variables como el empleo del sector, la venta de materiales, los permisos de edificación, entre otros. Este es un indicador que refleja claramente la situación de la industria, como se puede ver en el siguiente gráfico:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/IMACONWeb.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Se puede ver una clara tendencia a la baja en el sector inmobiliario del país, que coincide con el aumento de los precios y las tasas de interés ya mencionadas. Este es un indicador muy importante dado las variables que contempla.</p>
+</section>
+<section id="análisis-de-largo-plazo" class="level3">
+<h3 class="anchored" data-anchor-id="análisis-de-largo-plazo">Análisis de Largo Plazo</h3>
+<section id="caracterización-deuda-aplicación-cap.-15" class="level4">
+<h4 class="anchored" data-anchor-id="caracterización-deuda-aplicación-cap.-15">Caracterización deuda (Aplicación cap. 15)</h4>
+<p>Para caracterizar la deuda, se hizo un estudio de los <a href="https://parquearauco.modyocdn.com/uploads/fcdb4232-f642-497f-aea5-a336875d484a/original/Estados_Financieros_Consolidados_Parque_Arauco_94627000_202306.pdf">Estados Financieros</a> de Parque Arauco a la fecha del 30 de junio de 2023. Es importante señalar que la unidad a utilizar será de M$ (cifra expresada en miles de pesos chilenos).</p>
+<p>En primer lugar, se pudo ver que la compañía tiene activos por M$3.095.617.496, pasivos por M$1.705.078.430 y patrimonio por M$1.390.539.066.</p>
+<p>Con respecto a los activos, fue relevante ver que la compañía tiene M$1.402.554 invertidos en Fondos Mutuos, mientras que tiene M$23.494.012 en instrumentos de cobertura y M$37.095 en Forward de moneda. Estos dos últimos instrumentos se revisarán en el ítem de activos derivados.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/ActivosPARAUCO.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Luego, con respecto a los pasivos, fue relevante observar que la compañía tiene pasivos (por emisión de bonos) corrientes por M$19.844.398 y no corrientes por M$908.661.815. Esta cantidad contempla la <a href="https://finance.yahoo.com/news/parque-arauco-successfully-issues-bond-164700487.html">última emisión</a> mencionada anteriormente, donde se recaudaron M$107.561.533, donde se contempla el pago de intereses semestrales a una tasa de 3,2% anual compuesta, y con un pago total de capital. Esta emisión fue en marzo de este año.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/PasivosPARAUCO.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Por último, con respecto al patrimonio, PARAUCO corresponde a la única serie de acciones de la empresa. Actualmente hay 905.715.882 acciones en circulación, con un precio de mercado de CLP$1.225 a la fecha. También, el dividendo a pagar se estableció en CLP$25 por acción.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/AccionesEnCirculacion.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Las utilidades por acción también se pueden ver en la siguiente tabla:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/UtilidadesPorAccion.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</section>
+<section id="caracterización-de-emisiones-históricas-aplicación-cap.-20" class="level4">
+<h4 class="anchored" data-anchor-id="caracterización-de-emisiones-históricas-aplicación-cap.-20">Caracterización de emisiones históricas (Aplicación cap. 20)</h4>
+<p>Parque Arauco ha emitido acciones en varias ocasiones. A continuación, se puede ver una tabla que muestra las emisiones realizadas por la compañía, según información entregada por la <a href="https://www.cmfchile.cl/institucional/estadisticas/acc_registro1.php?lang=es">CMF</a>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/EmisionesParqueArauco.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Para describir el proceso, se hará un análisis particular de la última emisión realizada el año 2016, según información encontrada en los <a href="https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=bb0f2e9a94f7b79adc90a3b9e852284fVFdwQmVFNXFRWGxOUkVGNFQwUk5lVTFuUFQwPQ==&amp;secuencia=-1&amp;t=1695872515">prospectos de emisión de acciones</a> en la CMF.</p>
+<p>En aquella ocasión, el monto máximo a recaudar correspondía a CLP$78.000.000.000, emitiendo 78.000.000 de acciones. De estas, 7.800.000 serían destinadas a planes de compensación para ejecutivos de Parque Arauco, que deberán ser suscritas y pagadas en un plazo máximo de 5 años. Las restantes 70.200.000 deberán ser suscritas y pagadas dentro de 3 años máximo. Todo esto correspondía a la confección del contrato de suscripción.</p>
+<p>Luego, se elaboró la declaración de registro, que corresponde al informe de donde se obtiene esta información. Ahí se señala toda la información financiera y administrativa pertinente, y se menciona que los fondos serían utilizados para el financiamiento de parte de los proyectos que se estaban desarrollando en la empresa tanto en Chile, Perú y Colombia.</p>
+<p>Luego, se fijó el precio de la colocación, en este caso a CLP$1.000. La colocación se haría por intermediarios, siendo estos Banchile e Itaú. En este caso, se señala que el procedimiento sería ofrecer de forma preferente y por 30 días a los accionistas inscritos. Luego de esto, se pasaría a la oferta pública y venta, y finalmente el mercado se estabiliza.</p>
+</section>
+<section id="relación-con-activos-derivados" class="level4">
+<h4 class="anchored" data-anchor-id="relación-con-activos-derivados">Relación con activos derivados</h4>
+<p>Con respecto a los activos derivados, Parque Arauco se ha preocupado de contratar coberturas para disminuir riesgos de tipo de cambio y tasas de interés. En la tabla a continuación, se puede ver que el principal derivado financiero que ha contratado la empresa son Swaps, con el fin de cubrirse del tipo de cambio y la tasa de interés. Sin embargo, también han contratado Forwards, para cubrirse del tipo de cambio.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Imagenes/DerivadosPARAUCO.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p>Estos derivados son importantes para la operación de la empresa. Ya se mencionó la importancia de la tasa de interés para el sector, y también el tipo de cambio dada su operación internacional.</p>
+</section>
+</section>
+<section id="reporte-grupal" class="level3">
+<h3 class="anchored" data-anchor-id="reporte-grupal">Reporte grupal</h3>
+<p>Definicion de un balance de portafolio sobre los 3 activos del grupo, donde se especifique los pesos de cada activo de tal forma que maximize el retorno de la cartera.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

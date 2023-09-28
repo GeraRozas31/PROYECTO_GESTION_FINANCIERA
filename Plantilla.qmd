@@ -21,17 +21,23 @@ Fecha de entrega: Jueves 28 de Septiembre 23:59.
 
 ### Definición
 
-Definir y describir activo a estudiar, acompañar con datos (tributa a indicador de Contexto) y con referencias científicas realizando una investigacion relacionada a articulos ubicados en la base de datos de Web of Science, con una calificacion Q1-Q2 y referenciada varias veces (Esto se verá en el tutorial de la semana 5).
-
 La temática a estudiar corresponde al sector inmobiliario. Este sector comprende la oferta y demanda de bienes inmuebles (casas, departamentos, terrenos, etc.), que pueden tener diversos usos, como el uso residencial, comercial, industrial, etc. Aun así, este sector también comprende temas de inversión, financiamiento, urbanización, e incluso temas sociales asociados.
 
-En Chile, este sector es especialmente relevante. Dada la importante inmigración, expansión de los centros urbanos, entre otros factores, los sectores residenciales y comerciales experimentan un importante crecimiento, con todos los beneficios y problemáticas que involucran. Por ejemplo, un estudio llamado ["Real estate production, geographies of mobility and spatial contestation: A two case study in Santiago de Chile"](https://www.webofscience.com/wos/woscc/full-record/WOS:000431935400010) , muestra que "mientras que la zona interior de Santiago, en proceso de reurbanización, a pesar de ser un espacio excluyente en el que no existen viviendas asequibles orientadas a las rentas más bajas, no es un espacio disputado en términos de acceso a los medios de movilidad, la periferia en expansión de la ciudad muestra fuertes diferencias de clase entre los nuevos y los antiguos habitantes." Esto muestra la relevancia del sector inmobiliario para el país, pues tiene influencia tanto en temas económicos como sociales.
+En Chile, este sector es especialmente relevante. Dada la importante inmigración, expansión de los centros urbanos, entre otros factores, los sectores residenciales y comerciales han ganado importancia, con todos los beneficios y problemáticas que involucran. Por ejemplo, un estudio llamado ["Real estate production, geographies of mobility and spatial contestation: A two case study in Santiago de Chile"](#0) , muestra que "mientras que la zona interior de Santiago, en proceso de reurbanización, a pesar de ser un espacio excluyente en el que no existen viviendas asequibles orientadas a las rentas más bajas, no es un espacio disputado en términos de acceso a los medios de movilidad, la periferia en expansión de la ciudad muestra fuertes diferencias de clase entre los nuevos y los antiguos habitantes." Esto muestra la relevancia del sector inmobiliario para el país, pues tiene influencia tanto en temas económicos como sociales.
+
+En el último tiempo, sin embargo, la industria inmobiliaria ha sufrido importantes dificultades en Chile. La actividad del sector inmobiliario ha ido a la baja, han disminuido los ocupados en el sector, han aumentado los costos de los materiales, etc. Por ejemplo, se puede ver la caída de la actividad del sector en el siguiente gráfico:
+
+![](Imagenes/Captura%20de%20pantalla%202023-09-27%20213416.png){fig-align="center"}
+
+Todo esto según información del [Banco Central](https://www.bcentral.cl/contenido/-/detalle/que-esta-pasando-con-los-precios-de-las-viviendas-en-chile) y la [Cámara Chilena de la Construcción](https://cchc.cl/centro-de-informacion/indicadores/empleo-y-desempleo-sector-construccion) que se analizará con mayor profundidad en la sección de Contexto.
+
+Dentro de este sector, se ha definido como activo a estudiar a Parque Arauco S.A (PARAUCO). Parque Arauco está centrada principalmente en la edificación y administración de centros comerciales. Fue fundada el año 1979, y actualmente tiene operaciones en Chile, Perú y Colombia. La empresa tiene cuatro formatos de centros comerciales: regionales, de barrio, outlets y strip centers, donde operan grandes tiendas (por ejemplo, Fallabella), restaurantes, supermercados, cines, etc.
 
 ```{r ETL}
 #| echo: false
 # Alternativamente Use FANG data set
 # data("FANG") 
-end <- as_date("2022-12-31")
+end <- as_date("2023-09-27")
 # Get AAPL and AMZN Stock Prices
 # AAPL <- tq_get("AAPL", get = "stock.prices", from = "2015-09-01", to = end)
 # AMZN <- tq_get("AMZN", get = "stock.prices", from = "2000-01-01", to = end)
@@ -41,7 +47,7 @@ CONCHATORO <- tq_get("CONCHATORO.SN", get = "stock.prices", from = "2000-01-01",
 CL <- rbind(PARAUCO,VAPORES,CONCHATORO)
 ```
 
-El activo PARAUCO tiene un valor promedio para el intervalo igual a `r round(mean(PARAUCO$close),digits=0)`
+A continuación, se puede ver el movimiento del precio de su acción en el mercado de valores. El activo PARAUCO tiene un valor promedio para el intervalo igual a `r round(mean(PARAUCO$close),digits=0)` , donde se puede apreciar una fuerte caída durante los años de pandemia y una aparente recuperación en el último tiempo.
 
 ```{r PARAUCOline}
 #| echo: false
@@ -64,86 +70,95 @@ PARAUCO %>%
 
 ### Motivación
 
-Establecer la relevancia o potencial interés específico del activo que justifique el porque realizar la investigacion a este activo y no a otros. Argumentar haciendo referencia a datos o noticias actuales que motiven el estudio de este activo.
-
-Estudiar el activo PARAUCO se vuelve relevante dado el fuerte movimiento que ha vivido la empresa Parque Arauco en el último tiempo. La compañía ha estado viviendo una importante expansión, donde [desembolsó USD\$ 17 millones](https://finance.yahoo.com/news/parque-arauco-acquires-controlling-stake-123000596.html) para adquirir una posición controladora de un fondo de inversión inmobiliario en Medellín, el pasado 6 de septiembre de 2023. "Con esta inversión, damos un paso más en nuestra estrategia de incorporar a nuestro portafolio centros comerciales multipropietarios icónicos y de alta calidad, que cuentan con ubicaciones privilegiadas y excelentes perspectivas de crecimiento futuro", señaló Eduardo Pérez Marchant, director general de la compañía.
+Estudiar el activo Parque Arauco (PARAUCO) se vuelve relevante dado el fuerte movimiento que ha vivido la empresa en el último tiempo, a pesar del difícil momento de la industria (en Chile, al menos). La compañía ha estado viviendo una importante expansión, donde [desembolsó USD\$ 17 millones](https://finance.yahoo.com/news/parque-arauco-acquires-controlling-stake-123000596.html) para adquirir una posición controladora de un fondo de inversión inmobiliario en Medellín, el pasado 6 de septiembre de 2023. "Con esta inversión, damos un paso más en nuestra estrategia de incorporar a nuestro portafolio centros comerciales multipropietarios icónicos y de alta calidad, que cuentan con ubicaciones privilegiadas y excelentes perspectivas de crecimiento futuro", señaló Eduardo Pérez Marchant, director general de la compañía.
 
 También, durante agosto de este año, se anunció una [inversión de USD\$ 34 millones](https://finance.yahoo.com/news/parque-arauco-acquires-stake-tit-124000112.html) por el 51% de Titán Plaza, uno de los centros comerciales más emblemáticos de Bogotá. Esta inversión comprende aproximadamente 19.000 m^2^ de área comercial, que "en los últimos doce meses, hasta junio de 2023, esta área aportó un EBITDA de COP\$ 23.000 millones (aproximadamente USD\$ 5,6 millones)". Durante el mismo mes, también anunció una [inversión de USD\$ 33 millones](https://finance.yahoo.com/news/parque-arauco-announces-usd-33-212600795.html) para ampliar su principal activo en Perú, Megaplaza Independencia.
 
-Por último, en temas nacionales, [Parque Arauco emitió con éxito un bono](https://finance.yahoo.com/news/parque-arauco-successfully-issues-bond-164700487.html) en el mercado local chileno, por un total de UF 3.000.000 (aproximadamente USD\$130 millones), a una tasa del 3,15%, mediante Link Capital Partners y BCI. La demanda total alcanzpo 1,5 veces la oferta. La compañía, con una calificación de riesgo AA, realizó esta inversión para fortalecer la liquidez y estabilizar sus amortizaciones a futuro.
+Por último, en temas nacionales, [Parque Arauco emitió con éxito un bono](https://finance.yahoo.com/news/parque-arauco-successfully-issues-bond-164700487.html) en el mercado local chileno, por un total de UF 3.000.000 (aproximadamente USD\$130 millones), mediante Link Capital Partners y BCI. La demanda total alcanzó 1,5 veces la oferta. La compañía, con una calificación de riesgo AA, realizó esta inversión para fortalecer la liquidez y estabilizar sus amortizaciones a futuro.
 
-Con todo este movimiento en el último tiempo, se vuelve interesante estudiar el activo PARAUCO, pues todos estos anuncios e inversiones pueden tener incidencia en la valoración de éste, provocar fluctuaciones, entre otras situaciones. Además, es una de las empresas de inversión inmobiliaria más importante de Chile, por lo que es muy importante seguirla.
+Con todo este movimiento en el último tiempo, se vuelve interesante estudiar el activo PARAUCO, pues todas estas inversiones, anuncios, etc. parecieran indicar un buen momento de la empresa, a pesar del mal momento de la industria nacional, y por lo tanto relevante de estudiar.
 
 ### Contexto
 
-Ingesta datos del activo y provee un análisis de estadística descriptiva simple junto con el análisis de una variable económica de contexto. Ejemplo: Si el activo es una minera, la variable puede ser el precio del metal. Acompañar este analisis con graficos, riesgos, horizonte de inversion, rentabilidad del activo, entre otros.
+En primer lugar, es importante analizar los movimientos que ha tenido PARAUCO en el mercado en el último tiempo, por lo que se vuelve a mostrar el gráfico de la acción para entrar en mayor profundidad.
 
-```{r context}
-#| warning: false
+```{r PARAUCOline2}
 #| echo: false
-start <- end - weeks(6)
-
-CL %>%
-    filter(date >= start - days(2 * 15)) %>%
-    ggplot(aes(x = date, y = close, group = symbol)) +
-    geom_candlestick(aes(open = open, high = high, low = low, close = close)) +
-    geom_ma(ma_fun = SMA, n = 15, color = "darkblue", size = 1) +
-    labs(title = "CL Candlestick Chart", 
-         subtitle = "Experimenting with Mulitple Stocks",
-         y = "Closing Price", x = "") + 
-    coord_x_date(xlim = c(start, end)) +
-    facet_wrap(~ symbol, ncol = 2, scale = "free_y") +
-    theme_tq()
+PARAUCO %>%
+    ggplot(aes(x = date, y = close)) +
+    geom_line() +
+    labs(title = "PARAUCO Line Chart", y = "Closing Price", x = "") + 
+    theme_tq() +
+  geom_hline(yintercept=mean(PARAUCO$close), linetype="dashed", color = "red")
 ```
 
-Ejemplos:
+Se puede ver que la acción ha tenido bajas importantes principalmente durante la Crisis Subprime en el año 2007-2008, y también durante la crisis del Covid-19. Antes de este último suceso, la empresa había tenido su mayor valuación en bolsa, con un precio de acción superior a los CLP\$ 2.000. Después de eso, cayó por debajo de los CLP\$ 750, dado el freno de la actividad del sector inmobiliario durante la pandemia y las consecuencias económicas posteriores que ésta trajo. Luego de esto, la acción de la empresa Parque Arauco ha recuperado valor, llegando a los CLP\$ 1.225 que vale hoy en día.
 
-::: columns
-::: {.column width="50%"}
-![](photos/Captura%20de%20pantalla%202023-08-22%20102815.png){fig-align="left" width="261"}
-:::
+Ahora bien, como se señaló anteriormente, es importante considerar algunas variables económicas que permiten dar contexto al sector y al activo. En ese sentido, la Cámara Chilena de la Construcción provee algunos indicadores para el rubro inmobiliario en Chile.
 
-::: {.column width="50%"}
-![](photos/Captura%20de%20pantalla%202023-08-22%20103005.png){fig-align="right" width="254"}
-:::
-:::
+La primera variable importante a considerar es el [Índice de Precios de Materiales e Insumos de Construcción (IPMIC).](https://cchc.cl/centro-de-informacion/indicadores/indice-precios-construccion) Este indicador permite ver cómo han aumentado los precios con respecto a un año base (2014 en este caso), y tiene una influencia directa en el rendimiento de las empresas del sector inmobiliario. A continuación, se puede ver un gráfico de este indicador desde el 2017:
 
-![](photos/Captura%20de%20pantalla%202023-08-22%20103037.png){fig-align="left" width="256"}
+![](Imagenes/IndicePreciosConstruccion.png){fig-align="center"}
 
-### Tareas Semana 4
+Se puede ver una clara relación de que, cuando los precios han subido, la acción PARAUCO ha bajado. Incluso, durante los últimos meses del año la acción ha experimentado una leve caída, coincidiendo justamente con un aumento de los precios de los materiales. Se puede ver entonces que hay una relación bastante directa entre el IPMIC y la valoración del activo y sector.
 
--   Utilizar otros ejemplos de visualización: https://business-science.github.io/tidyquant/articles/TQ04-charting-with-tidyquant.html
--   ¿Para que sirven las siguientes líneas en los bloques de código?
+Otra variable importante para el sector inmobiliario son las [tasas de interés](https://www.bcentral.cl/web/banco-central/areas/estadisticas/tasas-de-interes). Esta variable tiene una incidencia directa en el desempeño del sector, tanto para la capacidad de endeudamiento de las empresas para llevar a cabo sus proyectos (oferta), como para la capacidad de deuda de las personas, empresas o sociedades que desean adquirir los inmuebles (demanda). A continuación, se muestra un gráfico que representa el movimiento de las tasas de interés en el último tiempo:
 
-```         
-#| warning: false
-#| echo: false
-```
+![](Imagenes/TasasDeInteres.png){fig-align="center"}
 
--   Definir activos en base a cada una de las [industrias definidas](https://uandes.instructure.com/courses/28266/pages/proyecto-del-curso): Inmobiliaria, Banca, Energía
--   Buscar referencias científicas en la literatura para dar contexto al análisis
+Se puede ver nuevamente que las tasas iban a la baja, pero que en el último tiempo han aumentado. Esto ha colaborado a que se frene el sector en el país.
+
+Por último, otra variable importante corresponde al [Índice Mensual de Actividad de la Construcción (IMACON)](https://cchc.cl/centro-de-informacion/indicadores/imacon), que indica el comportamiento de la actividad con respecto a un año base (2014 en este caso) y contempla variables como el empleo del sector, la venta de materiales, los permisos de edificación, entre otros. Este es un indicador que refleja claramente la situación de la industria, como se puede ver en el siguiente gráfico:
+
+![](Imagenes/IMACONWeb.png){fig-align="center"}
+
+Se puede ver una clara tendencia a la baja en el sector inmobiliario del país, que coincide con el aumento de los precios y las tasas de interés ya mencionadas. Este es un indicador muy importante dado las variables que contempla.
 
 ### Análisis de Largo Plazo
 
 #### Caracterización deuda (Aplicación cap. 15)
 
-Describir el activo especificando en que realiza sus inversiones (por tipo de instrumento). Especificar sus acciones comunes, preferentes y bonos relacionados aplicando lo aprendido en el capitulo respectivo.
+Para caracterizar la deuda, se hizo un estudio de los [Estados Financieros](https://parquearauco.modyocdn.com/uploads/fcdb4232-f642-497f-aea5-a336875d484a/original/Estados_Financieros_Consolidados_Parque_Arauco_94627000_202306.pdf) de Parque Arauco a la fecha del 30 de junio de 2023. Es importante señalar que la unidad a utilizar será de M\$ (cifra expresada en miles de pesos chilenos).
 
-Ejemplo de un fondo mutuo como activo a analizar:
+En primer lugar, se pudo ver que la compañía tiene activos por M\$3.095.617.496, pasivos por M\$1.705.078.430 y patrimonio por M\$1.390.539.066.
 
-![](photos/Captura%20de%20pantalla%202023-08-22%20112340.png){fig-align="center"}
+Con respecto a los activos, fue relevante ver que la compañía tiene M\$1.402.554 invertidos en Fondos Mutuos, mientras que tiene M\$23.494.012 en instrumentos de cobertura y M\$37.095 en Forward de moneda. Estos dos últimos instrumentos se revisarán en el ítem de activos derivados.
 
-#### Caracterización de emisiones históricas (Aplicación cap. 20)
+![](Imagenes/ActivosPARAUCO.png){fig-align="center"}
 
-Describir el proceso de emision de acciones paso a paso del activo seleccionado, caracterizando el tipo de colocacion que utilizaron en contraste con el procedimiento basico realizado en el capitulo respectivo.
+Luego, con respecto a los pasivos, fue relevante observar que la compañía tiene pasivos (por emisión de bonos) corrientes por M\$19.844.398 y no corrientes por M\$908.661.815. Esta cantidad contempla la [última emisión](https://finance.yahoo.com/news/parque-arauco-successfully-issues-bond-164700487.html) mencionada anteriormente, donde se recaudaron M\$107.561.533, donde se contempla el pago de intereses semestrales a una tasa de 3,2% anual compuesta, y con un pago total de capital. Esta emisión fue en marzo de este año.
 
-![](photos/Captura%20de%20pantalla%202023-08-22%20111527.png){fig-align="center"}
+![](Imagenes/PasivosPARAUCO.png){fig-align="center"}
+
+Por último, con respecto al patrimonio, PARAUCO corresponde a la única serie de acciones de la empresa. Actualmente hay 905.715.882 acciones en circulación, con un precio de mercado de CLP\$1.225 a la fecha. También, el dividendo a pagar se estableció en CLP\$25 por acción.
+
+![](Imagenes/AccionesEnCirculacion.png){fig-align="center"}
+
+Las utilidades por acción también se pueden ver en la siguiente tabla:
+
+![](Imagenes/UtilidadesPorAccion.png){fig-align="center"}
+
+#### Caracterización de emisiones históricas (Aplicación cap.  20)
+
+Parque Arauco ha emitido acciones en varias ocasiones. A continuación, se puede ver una tabla que muestra las emisiones realizadas por la compañía, según información entregada por la [CMF](https://www.cmfchile.cl/institucional/estadisticas/acc_registro1.php?lang=es):
+
+![](Imagenes/EmisionesParqueArauco.png){fig-align="center"}
+
+Para describir el proceso, se hará un análisis particular de la última emisión realizada el año 2016, según información encontrada en los [prospectos de emisión de acciones](https://www.cmfchile.cl/sitio/aplic/serdoc/ver_sgd.php?s567=bb0f2e9a94f7b79adc90a3b9e852284fVFdwQmVFNXFRWGxOUkVGNFQwUk5lVTFuUFQwPQ==&secuencia=-1&t=1695872515) en la CMF.
+
+En aquella ocasión, el monto máximo a recaudar correspondía a CLP\$78.000.000.000, emitiendo 78.000.000 de acciones. De estas, 7.800.000 serían destinadas a planes de compensación para ejecutivos de Parque Arauco, que deberán ser suscritas y pagadas en un plazo máximo de 5 años. Las restantes 70.200.000 deberán ser suscritas y pagadas dentro de 3 años máximo. Todo esto correspondía a la confección del contrato de suscripción.
+
+Luego, se elaboró la declaración de registro, que corresponde al informe de donde se obtiene esta información. Ahí se señala toda la información financiera y administrativa pertinente, y se menciona que los fondos serían utilizados para el financiamiento de parte de los proyectos que se estaban desarrollando en la empresa tanto en Chile, Perú y Colombia.
+
+Luego, se fijó el precio de la colocación, en este caso a CLP\$1.000. La colocación se haría por intermediarios, siendo estos Banchile e Itaú. En este caso, se señala que el procedimiento sería ofrecer de forma preferente y por 30 días a los accionistas inscritos. Luego de esto, se pasaría a la oferta pública y venta, y finalmente el mercado se estabiliza.
 
 #### Relación con activos derivados
 
-Describe un activo derivado relacionado, mostrando datos de su evolucion. Tambien mencionar porque es importante este derivado para la activo en cuestion.
+Con respecto a los activos derivados, Parque Arauco se ha preocupado de contratar coberturas para disminuir riesgos de tipo de cambio y tasas de interés. En la tabla a continuación, se puede ver que el principal derivado financiero que ha contratado la empresa son Swaps, con el fin de cubrirse del tipo de cambio y la tasa de interés. Sin embargo, también han contratado Forwards, para cubrirse del tipo de cambio.
 
-Aplicar procedimiento de valoración de un derivado por inclusión en estructura de retornos (a profundizar en tutorial de la unidad de Derivados).
+![](Imagenes/DerivadosPARAUCO.png){fig-align="center"}
+
+Estos derivados son importantes para la operación de la empresa. Ya se mencionó la importancia de la tasa de interés para el sector, y también el tipo de cambio dada su operación internacional.
 
 ### Reporte grupal
 
