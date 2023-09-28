@@ -64,7 +64,7 @@ PARAUCO %>%
 PARAUCO %>%
     ggplot(aes(x = date, y = close)) +
     geom_candlestick(aes(open = open, high = high, low = low, close = close)) +
-    labs(title = "AAPL Candlestick Chart", y = "Closing Price", x = "") +
+    labs(title = "PARAUCO Candlestick Chart", y = "Closing Price", x = "") +
     theme_tq()
 ```
 
@@ -138,7 +138,7 @@ Las utilidades por acción también se pueden ver en la siguiente tabla:
 
 ![](Imagenes/UtilidadesPorAccion.png){fig-align="center"}
 
-#### Caracterización de emisiones históricas (Aplicación cap.  20)
+#### Caracterización de emisiones históricas (Aplicación cap. 20)
 
 Parque Arauco ha emitido acciones en varias ocasiones. A continuación, se puede ver una tabla que muestra las emisiones realizadas por la compañía, según información entregada por la [CMF](https://www.cmfchile.cl/institucional/estadisticas/acc_registro1.php?lang=es):
 
