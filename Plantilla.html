@@ -69,6 +69,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="Plantilla_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="Plantilla_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -229,7 +231,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="reporte-grupal" class="level3">
 <h3 class="anchored" data-anchor-id="reporte-grupal">Reporte grupal</h3>
-<p>Definicion de un balance de portafolio sobre los 3 activos del grupo, donde se especifique los pesos de cada activo de tal forma que maximize el retorno de la cartera.</p>
+<p>Para la determinación de los pesos del portafolio compuesto por las acciones del grupo, se buscó calcular el portafolio tangencial. Entonces, con los retornos esperados <span class="math inline">\(\mu\)</span> y la matriz de covarianza de los activos que componen el portafolio <span class="math inline">\(\Sigma\)</span>, se calcularon los pesos <span class="math inline">\(w\)</span> de cada activo. El problema de optimización a maximizar fue el siguiente:</p>
+<p><span class="math display">\[
+\underset{w}{max} \{\mu - \delta w^T\Sigma w\}
+\]</span></p>
+<p>Sujeto a:</p>
+<p><span class="math display">\[
+\underset{i}{\sum}w_i = 1
+\]</span></p>
+<p><span class="math display">\[
+0 \leq w_i \leq 1
+\]</span></p>
+<p>Si bien no se está maximizando el ratio de <span class="math inline">\(Sharpe\)</span> necesariamente, se penaliza la función objetivo con un grado <span class="math inline">\(\delta\)</span> a la función objetivo por la varianza del portafolio. Luego, de acuerdo al factor de penalización se puede definir un portafolio con mayor o menor grado de aversión al riesgo, pues mientras mayor sea el factor, más se penalizará la función objetivo en función del riesgo y viceversa.</p>
+<p>En este caso, se decidió tomar un perfil de inversión conservador, dada la recesión que vive la economía chilena en la actualidad. También, se decidió que la información a utilizar para calcular los retornos y sus varianzas sería a partir del 2021, con el fin de considerar los últimos efectos de la pandemia y no la pandemia en su totalidad, por ser un evento muy aislado que altera los resultados. También, se consideró este horizonte de información por ser una inversión a corto plazo, y por lo tanto es mejor considerar las situaciones más recientes de los activos que toda la información histórica, pues la información reciente es más representativa.</p>
+<p>Con todo esto, fue posible obtener la información de los retornos, definir el grado del factor de penalización y maximizar los retornos en función del riesgo asumido. Así, los resultados de los pesos de cada activo en el portafolio fueron los siguientes:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Acción</th>
+<th>Pesos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Banco de Chile</td>
+<td>68,3%</td>
+</tr>
+<tr class="even">
+<td>Parque Arauco</td>
+<td>10,3%</td>
+</tr>
+<tr class="odd">
+<td>COPEC</td>
+<td>21,4%</td>
+</tr>
+</tbody>
+</table>
+<p>Cuyo rendimiento esperado es de 1,113%.</p>
 </section>
 </section>
 

@@ -162,4 +162,32 @@ Estos derivados son importantes para la operación de la empresa. Ya se mencion�
 
 ### Reporte grupal
 
-Definicion de un balance de portafolio sobre los 3 activos del grupo, donde se especifique los pesos de cada activo de tal forma que maximize el retorno de la cartera.
+Para la determinación de los pesos del portafolio compuesto por las acciones del grupo, se buscó calcular el portafolio tangencial. Entonces, con los retornos esperados $\mu$ y la matriz de covarianza de los activos que componen el portafolio $\Sigma$, se calcularon los pesos $w$ de cada activo. El problema de optimización a maximizar fue el siguiente:
+
+$$
+\underset{w}{max} \{\mu - \delta w^T\Sigma w\}
+$$
+
+Sujeto a:
+
+$$
+\underset{i}{\sum}w_i = 1
+$$
+
+$$
+0 \leq w_i \leq 1
+$$
+
+Si bien no se está maximizando el ratio de $Sharpe$ necesariamente, se penaliza la función objetivo con un grado $\delta$ a la función objetivo por la varianza del portafolio. Luego, de acuerdo al factor de penalización se puede definir un portafolio con mayor o menor grado de aversión al riesgo, pues mientras mayor sea el factor, más se penalizará la función objetivo en función del riesgo y viceversa.
+
+En este caso, se decidió tomar un perfil de inversión conservador, dada la recesión que vive la economía chilena en la actualidad. También, se decidió que la información a utilizar para calcular los retornos y sus varianzas sería a partir del 2021, con el fin de considerar los últimos efectos de la pandemia y no la pandemia en su totalidad, por ser un evento muy aislado que altera los resultados. También, se consideró este horizonte de información por ser una inversión a corto plazo, y por lo tanto es mejor considerar las situaciones más recientes de los activos que toda la información histórica, pues la información reciente es más representativa.
+
+Con todo esto, fue posible obtener la información de los retornos, definir el grado del factor de penalización y maximizar los retornos en función del riesgo asumido. Así, los resultados de los pesos de cada activo en el portafolio fueron los siguientes:
+
+| Acción         | Pesos |
+|----------------|-------|
+| Banco de Chile | 68,3% |
+| Parque Arauco  | 10,3% |
+| COPEC          | 21,4% |
+
+Cuyo rendimiento esperado es de 1,113%.
