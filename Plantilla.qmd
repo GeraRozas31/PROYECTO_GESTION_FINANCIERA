@@ -191,3 +191,196 @@ Con todo esto, fue posible obtener la información de los retornos, definir el g
 | COPEC          | 21,4% |
 
 Cuyo rendimiento esperado es de 1,113%.
+
+### Aplicación Black-Scholes
+
+A continuación, se realizará la valorización de una opción de compra "call" utilizando el modelo de Black-Scholes. Dado que no se encontró información sobre las opciones de Parque Arauco, se decidió aplicar el modelo para una opción de la empresa Simon Property Group (SPG), compañía estadounidense dedicada al Real Estate Comercial y, por lo tanto, bastante similar a Parque Arauco.
+
+El modelo Black-Scholes, según se señala en el artículo ["On analytical solution of the Black-Scholes equation by the first integral method"](https://www-webofscience-com.uandes.idm.oclc.org/wos/woscc/full-record/WOS:000346133600009), "se utiliza como modelo para valorar opciones de compra y venta europeas o estadounidenses sobre acciones que no pagan dividendos. En la teoría de la valoración de opciones, la ecuación de Black-Scholes es uno de los modelos más eficaces para valorar las opciones." En ese sentido, este modelo promete una buena valuación del activo en cuestión.
+
+La formulación continua de Black-Scholes es la siguiente:
+
+$$
+C(S,t)=S\cdot \Phi(d_1) - K exp(-R\cdot t) \cdot \Phi(d_2)
+$$
+
+$$
+d_1= \frac{\log\frac{S}{K}+(R+\frac{\sigma^2}{2})\cdot t}{\sqrt{\sigma^2\cdot t}}
+$$
+
+$$
+d_2= d_1-\sqrt{\sigma^2\cdot t}
+$$
+
+Donde $S$ corresponde al precio de la acción, $K$ al precio del ejercicio, $R$ a la tasa libre de riesgo, $\sigma^2$ a la variación del rendimiento de la acción y $t$ al tiempo para el vencimiento.
+
+El código a continuación permite calcular el valor de la opción con el Modelo Black-Scholes, conectándose a Yahoo Finance para obtener toda la información necesaria. En este caso, la opción "call" a valorar corresponde a la "SPG231215C00055000", con vencimiento para el 15 de diciembre.
+
+```{python}
+
+import yfinance as yf
+from datetime import datetime as dt
+from scipy.stats import norm
+import datetime
+import numpy as np
+
+def black_scholes(S, K, T, r, sigma, option_type='call'):
+    d1 = (np.log(S / K) + (r + (sigma**2) / 2) * T) / (sigma * np.sqrt(T))
+    d2 = d1 - sigma * np.sqrt(T)
+
+    if option_type == 'call':
+        option_price = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+    else:
+        option_price = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+
+    return option_price
+
+# Símbolo del activo
+symbol = "SPG"
+
+# Descargar datos de Yahoo Finance
+asset_data = yf.Ticker(symbol)
+precio_accion = asset_data.history(period='1d')['Close'][0]
+
+data = yf.download(symbol, start='2023-01-01', end=datetime.date.today().strftime("%Y-%m-%d"))
+
+# Calcular los rendimientos diarios
+data["Daily_Returns"] = data["Adj Close"].pct_change()
+
+# Calcular la volatilidad histórica
+volatilidad = data["Daily_Returns"].std()
+
+opcion = yf.Ticker("SPG231215C00055000")
+precio_strike=opcion.info["strikePrice"]
+fecha = dt.utcfromtimestamp(opcion.info["expireDate"])
+tiempo_para_vencimiento = (np.datetime64(fecha) - np.datetime64('today')) / np.timedelta64(1, 'D')
+
+treasury_data = yf.Ticker("^TNX")
+
+# Obtener el historial de precios
+treasury_history = treasury_data.history(period="1d")
+# Obtener la tasa de rendimiento (yield)
+tasa_libre_de_riesgo= treasury_history['Close'][0]/100
+
+option_type = 'call'
+
+option_price = black_scholes(precio_accion, precio_strike, tiempo_para_vencimiento / 365, tasa_libre_de_riesgo, volatilidad, option_type)
+
+print(f"Precio de la opción {option_type}: ${option_price:.2f}") 
+```
+
+### Modelo Adicional de valorizacion
+
+El modelo adicional de valorización propuesto corresponde al Modelo Binomial o Modelo de Árbol Binomial. Este es un modelo en tiempo discreto, donde se puede diagramar un árbol que representa los distintos caminos que puede seguir el precio de la opción, asumiendo que sigue un camino aleatorio. Según un artículo publicado por Gastón Milanesi, ["Valuación de Opciones Reales: Análisis comparativo entre el Modelo Binomial y su Versión Borrosa"](https://revistas.unc.edu.ar/index.php/epio/article/view/20267/19924), "las principales variables que afectan el valor de la opción en el tradicional modelo binomial (Cox, Ross y Rubinstein, 1979) están dadas por los factores de ascenso y descenso (u; d) que definen el recorrido del activo subyacente. Los coeficientes son calculados a partir de la volatilidad ($\sigma$) del precio correspondiente a una cartera de activos financieros gemelos o réplica de los flujos de fondos del subyacente". Es importante señalar que este modelo se basa en la "valuación neutral al riesgo", donde se asume que los inversionistas son neutrales al riesgo, que significa que los inversionistas no aumentan el retorno esperado requerido de una inversión para compensar el aumento del riesgo. Todo esto según el libro "[Options, Futures and Other Derivatives](https://faculty.ksu.edu.sa/sites/default/files/options_futures_and_other_derivatives_8th_ed_part1.pdf)" de John C. Hull.
+
+Para este modelo, se necesitan conocer los mismos parámetros que para el modelo Black-Scholes. $S$ corresponde al precio de la acción, $K$ al precio del ejercicio, $R$ a la tasa libre de riesgo, $\sigma^2$ a la variación del rendimiento de la acción y $t$ al tiempo para el vencimiento. Adicionalmente, se debe definir el número de pasos o nodos que tendrá el árbol, que en este caso se denotará como $n$. Así, el paso a paso para obtener el resultado es el siguiente:
+
+1.  Calcular el largo del paso del tiempo, que se define como $\Delta t=\frac{t}{n}$.
+
+2.  Obtener el factor de descuento, correspondiente a $e^{-r\cdot \Delta t}$ .
+
+3.  Calcular los factores de ascenso y descenso, $u=e^{\sigma \cdot \sqrt{\Delta t}}$ y $d=\frac{1}{u}$.
+
+4.  Calcular la probabilidad neutral al riesgo: $q=\frac{e^{r\cdot \Delta t}-d}{u-d}$. Esta representa la probabilidad de que haya un movimiento alcista en un mundo de "riesgo neutral", como se supone en este caso. $1-q$ representa la probabilidad de un movimiento bajista.
+
+5.  Construir el árbol binomial, donde en cada nodo del árbol se calcula el valor de la opción en función de los nodos que siguen después.
+
+6.  Valorar la opción en el nodo inicial, obteniendo el precio de la opción.
+
+### Aplicación modelo adicional
+
+El código a continuación permite calcular el valor de la opción con el Modelo de Árbol Binomial, conectándose a Yahoo Finance para obtener toda la información necesaria. En este caso, la opción "call" a valorar corresponde a la "SPG231215C00055000", con vencimiento para el 15 de diciembre.
+
+```{python}
+
+import yfinance as yf
+from datetime import datetime as dt
+from scipy.stats import norm
+import datetime
+import numpy as np
+
+# Función para valorar una opción utilizando el modelo de árbol binomial
+def binomial_option_pricing(S, K, T, r, sigma, option_type='call', n=1000):
+    # Calcula el paso de tiempo y el factor de descuento
+    dt = T / n
+    discount_factor = np.exp(-r * dt)
+
+    # Calcula los valores de movimiento hacia arriba y hacia abajo
+    u = np.exp(sigma * np.sqrt(dt))
+    d = 1 / u
+
+    # Calcula las probabilidades neutrales al riesgo
+    q = (np.exp(r * dt) - d) / (u - d)
+
+    # Inicializa una matriz para almacenar los valores de la opción en cada nodo del árbol
+    option_values = np.zeros((n + 1, n + 1))
+
+    # Llena la matriz de valores de opción en función del modelo de árbol binomial
+    for j in range(n + 1):
+        if option_type == 'call':
+            option_values[n, j] = max(0, S * (u**j) * (d**(n - j)) - K)
+        else:
+            option_values[n, j] = max(0, K - S * (u**j) * (d**(n - j)))
+
+    for i in range(n - 1, -1, -1):
+        for j in range(i + 1):
+            if option_type == 'call':
+                option_values[i, j] = max(0, (q * option_values[i + 1, j] + (1 - q) * option_values[i + 1, j + 1]) * discount_factor)
+            else:
+                option_values[i, j] = max(0, (q * option_values[i + 1, j] + (1 - q) * option_values[i + 1, j + 1]) * discount_factor)
+
+    return option_values[0, 0]
+
+# Símbolo del activo
+symbol = "SPG"
+
+# Descargar datos de Yahoo Finance
+asset_data = yf.Ticker(symbol)
+precio_accion = asset_data.history(period='1d')['Close'][0]
+
+data = yf.download(symbol, start='2023-01-01', end=datetime.date.today().strftime("%Y-%m-%d"))
+
+# Calcular los rendimientos diarios
+data["Daily_Returns"] = data["Adj Close"].pct_change()
+
+# Calcular la volatilidad histórica
+volatilidad = data["Daily_Returns"].std()
+
+opcion = yf.Ticker("SPG231215C00055000")
+precio_strike=opcion.info["strikePrice"]
+fecha = dt.utcfromtimestamp(opcion.info["expireDate"])
+tiempo_para_vencimiento = (np.datetime64(fecha) - np.datetime64('today')) / np.timedelta64(1, 'D')
+
+treasury_data = yf.Ticker("^TNX")
+
+# Obtener el historial de precios
+treasury_history = treasury_data.history(period="1d")
+# Obtener la tasa de rendimiento (yield)
+tasa_libre_de_riesgo= treasury_history['Close'][0]/100
+
+option_type = 'call'
+
+# Valorar la opción utilizando el modelo de árbol binomial
+
+option_price_bin = binomial_option_pricing(precio_accion, precio_strike, tiempo_para_vencimiento / 365, tasa_libre_de_riesgo, volatilidad, option_type, n=1000)
+
+print(f"Precio de la opción {option_type}: ${option_price_bin:.2f}")
+```
+
+### Análisis de contraste de ambos modelos
+
+Se puede ver que el resultado obtenido al aplica el Modelo Black-Scholes fue de USD \$50.35, mientras que para el Modelo de Árbol Binomial el resultado fue de USD \$48.94. Esta diferencia se puede deber a varias razones.
+
+En primer lugar, el Modelo Black-Scholes es un modelo continuo, mientras que el Modelo de Árbol Binomial es un modelo discreto. Esto incide directamente en los cálculos para la valoración, y por lo tanto efectos directos en los resultados. También, es importante señalar que el Modelo de Árbol Binomial puede manejar la volatilidad en cada paso, mientras que el Modelo de Black-Scholes la asume como constante a lo largo del tiempo. Esto puede llevar a resultados erróneos, pues la volatilidad cambia en el tiempo.
+
+Otro punto a considerar son los supuestos de los modelos. Ambos asumen la neutralidad al riesgo y una completitud y eficiencia de los mercados, lo que en la práctica no se cumple al 100%. Esto también puede llevar a obtener valuaciones incorrectas.
+
+### Reporte Grupal: Caso Administración
+
+Se eligen uno de los siguientes casos con tal de replicar y responder sus preguntas de acuerdo al activo principal elegido:
+
+-   Caso Administración de Capital de Trabajo de Keafer Manufacturing de la página 822 del ROSS.
+
+-   Caso Administración de Efectivo de Richmond Corporation de la página 845 del ROSS.
+
+-   Caso Administración de Efectivo de Braam Industries de la página 874 del ROSS.
