@@ -339,7 +339,7 @@ d_2= d_1-\sqrt{\sigma^2\cdot t}
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precio de la opción </span><span class="sc">{</span>option_type<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span>option_price<span class="sc">:.2f}</span><span class="ss">"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precio de la opción call: $50.35</code></pre>
+<pre><code>Precio de la opción call: $51.68</code></pre>
 </div>
 </div>
 </section>
@@ -436,24 +436,108 @@ d_2= d_1-\sqrt{\sigma^2\cdot t}
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Precio de la opción </span><span class="sc">{</span>option_type<span class="sc">}</span><span class="ss">: $</span><span class="sc">{</span>option_price_bin<span class="sc">:.2f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Precio de la opción call: $48.94</code></pre>
+<pre><code>Precio de la opción call: $50.31</code></pre>
 </div>
 </div>
 </section>
 <section id="análisis-de-contraste-de-ambos-modelos" class="level3">
 <h3 class="anchored" data-anchor-id="análisis-de-contraste-de-ambos-modelos">Análisis de contraste de ambos modelos</h3>
-<p>Se puede ver que el resultado obtenido al aplica el Modelo Black-Scholes fue de USD $50.35, mientras que para el Modelo de Árbol Binomial el resultado fue de USD $48.94. Esta diferencia se puede deber a varias razones.</p>
+<p>Se puede ver que el resultado obtenido al aplica el Modelo Black-Scholes fue de USD $50.35, mientras que para el Modelo de Árbol Binomial el resultado fue de USD $48.94. Estos resultados pueden variar según la fecha que se corra el código. De todas formas, la diferencia de estos valores se puede deber a varias razones.</p>
 <p>En primer lugar, el Modelo Black-Scholes es un modelo continuo, mientras que el Modelo de Árbol Binomial es un modelo discreto. Esto incide directamente en los cálculos para la valoración, y por lo tanto efectos directos en los resultados. También, es importante señalar que el Modelo de Árbol Binomial puede manejar la volatilidad en cada paso, mientras que el Modelo de Black-Scholes la asume como constante a lo largo del tiempo. Esto puede llevar a resultados erróneos, pues la volatilidad cambia en el tiempo.</p>
 <p>Otro punto a considerar son los supuestos de los modelos. Ambos asumen la neutralidad al riesgo y una completitud y eficiencia de los mercados, lo que en la práctica no se cumple al 100%. Esto también puede llevar a obtener valuaciones incorrectas.</p>
 </section>
 <section id="reporte-grupal-caso-administración" class="level3">
 <h3 class="anchored" data-anchor-id="reporte-grupal-caso-administración">Reporte Grupal: Caso Administración</h3>
-<p>Se eligen uno de los siguientes casos con tal de replicar y responder sus preguntas de acuerdo al activo principal elegido:</p>
-<ul>
-<li><p>Caso Administración de Capital de Trabajo de Keafer Manufacturing de la página 822 del ROSS.</p></li>
-<li><p>Caso Administración de Efectivo de Richmond Corporation de la página 845 del ROSS.</p></li>
-<li><p>Caso Administración de Efectivo de Braam Industries de la página 874 del ROSS.</p></li>
-</ul>
+<p>En este caso, el grupo eligió el Caso Administración de Efectivo de Braam Industries, donde se debe examinar la política de crédito de la compañía para ver si una política diferente podría contribuir a aumentar la rentabilidad. En ese caso, una vez determinada la política de crédito actual, se proponen 3 opciones para cambiar esta política, y se debe determinar cuál es la mejor alternativa y determinar inconsistencias.</p>
+<p>Este caso se replicó para la compañía Parque Arauco. Para esto, se buscó en los <a href="https://parquearauco.modyocdn.com/uploads/cc910618-497f-483b-9e31-160f8c6721b8/original/Estados_Financieros_Consolidados_Parque_Arauco_94627000_202212.pdf">E.E.F.F. de la compañía para el año 2022</a> toda la información necesaria para poder resolver el caso, tales como los ingresos por ventas, el monto en cuentas por cobrar, los costos administrativos, los costos variables de la operación, etc. La información encontrada fue la siguiente:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Concepto</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ingresos por Ventas Anuales (CLP$)</td>
+<td>$243.119.543.000</td>
+</tr>
+<tr class="even">
+<td>Monto Neto de Deudores por venta 2022 (CLP$)</td>
+<td>$22.420.967.000</td>
+</tr>
+<tr class="odd">
+<td>Monto Neto de Deudores por venta 2021 (CLP$)</td>
+<td>$23.653.332.000</td>
+</tr>
+<tr class="even">
+<td>Costos Administrativos (CLP$)</td>
+<td>$22.424.419.000</td>
+</tr>
+<tr class="odd">
+<td>Costo de las Ventas (CLP$)</td>
+<td>$55.126.662.000</td>
+</tr>
+</tbody>
+</table>
+<p>Con esta información, fue posible obtener las ventas anuales, la tasa de incumplimiento y los costos administrativos como porcentaje de las ventas, además del periodo de cuentas por cobrar y los costos variables que se tienen con la política de crédito actual.&nbsp;</p>
+<p>La tasa de incumplimiento como porcentaje de las ventas corresponde a la división entre el Monto Neto de Deudores por Venta para el año 2022 y las Ventas Anuales. Los costos administrativos como porcentaje de las ventas corresponden a la división entre los Costos Administrativos y las Ventas Anuales. El periodo de cuentas por cobrar corresponde a la división entre el promedio del Monto Neto de Deudores inicial y final, con las Ventas Anuales, y todo eso dividido por 365 para obtener la cantidad de días. Por último, los costos variables como porcentaje corresponden a la división entre los Costos de las Ventas y las Ventas Anuales.</p>
+<p>Los resultados se presentan a continuación:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Concepto</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ventas Anuales (CLP$)</td>
+<td>$243.119.543.000</td>
+</tr>
+<tr class="even">
+<td>Tasa de Incumplimiento (% Ventas)</td>
+<td>9,222199%</td>
+</tr>
+<tr class="odd">
+<td>Costos Administrativos (% Ventas)</td>
+<td>9,22362%</td>
+</tr>
+<tr class="even">
+<td>Periodo de cuentas por cobrar (Días)</td>
+<td>34,5861</td>
+</tr>
+<tr class="odd">
+<td>Costos Variables</td>
+<td>23%</td>
+</tr>
+</tbody>
+</table>
+<p>También, es importante señalar que para los cálculos que vienen a continuación, se utilizó la tasa de interés promedio de aquel periodo, correspondiente a un 8,375%.</p>
+<p>En lo que respecta a las diferentes opciones estas difieren en las ventas anuales, tasa de incumplimiento, costos administrativos y periodo de cuentas por cobrar. Luego, para evaluar cada opción se realiza el cálculo del Valor Presente Neto de cada una. De esta forma, se escoge la opción la cuál obtiene un VPN más alto, en comparación a las demás. Los resultados fueron los que se presentan a continuación.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Opción</th>
+<th>VPN (CLP$)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>$43.300.724.413,19</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>$38.355.341.091,22</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>$43.791.215.884,26</td>
+</tr>
+</tbody>
+</table>
+<p>De donde se observa que la opción que obtiene el mayor valor es la opción 3, luego esta debería ser la política a adoptar por parte de la empresa. Ahora, en cuanto a los costos de incumplimiento y costos administrativos de la opción 3 y 2, es extraño que si la opción 3 genera más ingresos, esta tenga menores costos asociados. Por lo tanto, aunque los gastos y las ventas no siempre están directamente relacionados, al examinar los detalles, se observa que los gastos de la opción 3 no son inferiores a los de la opción 2. Por consiguiente, la afirmación inicial no parece factible.</p>
 </section>
 </section>
 

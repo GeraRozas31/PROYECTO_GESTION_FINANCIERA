@@ -369,7 +369,7 @@ print(f"Precio de la opción {option_type}: ${option_price_bin:.2f}")
 
 ### Análisis de contraste de ambos modelos
 
-Se puede ver que el resultado obtenido al aplica el Modelo Black-Scholes fue de USD \$50.35, mientras que para el Modelo de Árbol Binomial el resultado fue de USD \$48.94. Esta diferencia se puede deber a varias razones.
+Se puede ver que el resultado obtenido al aplica el Modelo Black-Scholes fue de USD \$50.35, mientras que para el Modelo de Árbol Binomial el resultado fue de USD \$48.94. Estos resultados pueden variar según la fecha que se corra el código. De todas formas, la diferencia de estos valores se puede deber a varias razones.
 
 En primer lugar, el Modelo Black-Scholes es un modelo continuo, mientras que el Modelo de Árbol Binomial es un modelo discreto. Esto incide directamente en los cálculos para la valoración, y por lo tanto efectos directos en los resultados. También, es importante señalar que el Modelo de Árbol Binomial puede manejar la volatilidad en cada paso, mientras que el Modelo de Black-Scholes la asume como constante a lo largo del tiempo. Esto puede llevar a resultados erróneos, pues la volatilidad cambia en el tiempo.
 
@@ -377,10 +377,40 @@ Otro punto a considerar son los supuestos de los modelos. Ambos asumen la neutra
 
 ### Reporte Grupal: Caso Administración
 
-Se eligen uno de los siguientes casos con tal de replicar y responder sus preguntas de acuerdo al activo principal elegido:
+En este caso, el grupo eligió el Caso Administración de Efectivo de Braam Industries, donde se debe examinar la política de crédito de la compañía para ver si una política diferente podría contribuir a aumentar la rentabilidad. En ese caso, una vez determinada la política de crédito actual, se proponen 3 opciones para cambiar esta política, y se debe determinar cuál es la mejor alternativa y determinar inconsistencias.
 
--   Caso Administración de Capital de Trabajo de Keafer Manufacturing de la página 822 del ROSS.
+Este caso se replicó para la compañía Parque Arauco. Para esto, se buscó en los [E.E.F.F. de la compañía para el año 2022](https://parquearauco.modyocdn.com/uploads/cc910618-497f-483b-9e31-160f8c6721b8/original/Estados_Financieros_Consolidados_Parque_Arauco_94627000_202212.pdf) toda la información necesaria para poder resolver el caso, tales como los ingresos por ventas, el monto en cuentas por cobrar, los costos administrativos, los costos variables de la operación, etc. La información encontrada fue la siguiente:
 
--   Caso Administración de Efectivo de Richmond Corporation de la página 845 del ROSS.
+| Concepto                                      | Valor             |
+|-----------------------------------------------|-------------------|
+| Ingresos por Ventas Anuales (CLP\$)           | \$243.119.543.000 |
+| Monto Neto de Deudores por venta 2022 (CLP\$) | \$22.420.967.000  |
+| Monto Neto de Deudores por venta 2021 (CLP\$) | \$23.653.332.000  |
+| Costos Administrativos (CLP\$)                | \$22.424.419.000  |
+| Costo de las Ventas (CLP\$)                   | \$55.126.662.000  |
 
--   Caso Administración de Efectivo de Braam Industries de la página 874 del ROSS.
+Con esta información, fue posible obtener las ventas anuales, la tasa de incumplimiento y los costos administrativos como porcentaje de las ventas, además del periodo de cuentas por cobrar y los costos variables que se tienen con la política de crédito actual. 
+
+La tasa de incumplimiento como porcentaje de las ventas corresponde a la división entre el Monto Neto de Deudores por Venta para el año 2022 y las Ventas Anuales. Los costos administrativos como porcentaje de las ventas corresponden a la división entre los Costos Administrativos y las Ventas Anuales. El periodo de cuentas por cobrar corresponde a la división entre el promedio del Monto Neto de Deudores inicial y final, con las Ventas Anuales, y todo eso dividido por 365 para obtener la cantidad de días. Por último, los costos variables como porcentaje corresponden a la división entre los Costos de las Ventas y las Ventas Anuales.
+
+Los resultados se presentan a continuación:
+
+| Concepto                             | Valor             |
+|--------------------------------------|-------------------|
+| Ventas Anuales (CLP\$)               | \$243.119.543.000 |
+| Tasa de Incumplimiento (% Ventas)    | 9,222199%         |
+| Costos Administrativos (% Ventas)    | 9,22362%          |
+| Periodo de cuentas por cobrar (Días) | 34,5861           |
+| Costos Variables                     | 23%               |
+
+También, es importante señalar que para los cálculos que vienen a continuación, se utilizó la tasa de interés promedio de aquel periodo, correspondiente a un 8,375%.
+
+En lo que respecta a las diferentes opciones estas difieren en las ventas anuales, tasa de incumplimiento, costos administrativos y periodo de cuentas por cobrar. Luego, para evaluar cada opción se realiza el cálculo del Valor Presente Neto de cada una. De esta forma, se escoge la opción la cuál obtiene un VPN más alto, en comparación a las demás. Los resultados fueron los que se presentan a continuación.
+
+| Opción | VPN (CLP\$)         |
+|--------|---------------------|
+| 1      | \$43.300.724.413,19 |
+| 2      | \$38.355.341.091,22 |
+| 3      | \$43.791.215.884,26 |
+
+De donde se observa que la opción que obtiene el mayor valor es la opción 3, luego esta debería ser la política a adoptar por parte de la empresa. Ahora, en cuanto a los costos de incumplimiento y costos administrativos de la opción 3 y 2, es extraño que si la opción 3 genera más ingresos, esta tenga menores costos asociados. Por lo tanto, aunque los gastos y las ventas no siempre están directamente relacionados, al examinar los detalles, se observa que los gastos de la opción 3 no son inferiores a los de la opción 2. Por consiguiente, la afirmación inicial no parece factible.
